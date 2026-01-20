@@ -1,0 +1,45 @@
+body {
+    scrollbar-width: none;
+    overflow: auto;
+}
+body::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+}
+.home {
+    height: 100vh;
+}
+.home-title {
+    position: relative;
+    top: 4.2rem;
+    text-align: center;
+}
+.request-created {
+    position: relative;
+    top: 4.2rem;
+    background-color: var(--color-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.req-card {
+    background-color: var(--color-white);
+    margin: 10px;
+    border-radius: 8px;
+    font-size: larger;
+}
+.req-card div {
+    margin: 10px;
+}
+.pending {
+    color: yellow;
+}
+.approved {
+    color: green;
+    opacity: 0.9;
+}
+.rejected {
+    color:red;
+    opacity: 0.9;
+}

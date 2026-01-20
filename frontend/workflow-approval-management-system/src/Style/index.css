@@ -1,0 +1,14 @@
+:root {
+    --color-orange:#FF6B01;
+    --color-white:#FFFFFF;
+    --color-dark:#353535;
+}
+html{
+    scrollbar-width: none;
+    overflow: auto;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
