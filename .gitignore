@@ -1,22 +1,3 @@
-# Maven
-/target/
 
 # Eclipse
-.classpath
-.project
-.settings/
 .metadata/
-
-# Logs
-*.log
-
-# OS files
-Thumbs.db
-.DS_Store
-
-# Environment
-.env
-
-# Optional: Spring config secrets
-application-prod.properties
-application-prod.yml
