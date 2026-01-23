@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { Context } from "../Context/Context"
 import "../Style/navbar.css"
 import { Link } from "react-router-dom";
+import api from "../api/api";
 
 const Navbar = () => {
     const {details,setDetails,setToken,setIsAuthenticated} = useContext(Context);
