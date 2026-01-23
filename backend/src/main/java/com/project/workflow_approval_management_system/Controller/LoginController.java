@@ -32,4 +32,8 @@ public class LoginController {
 		return loginService.register(user);
 	}
 	
+	@PostMapping("/api/logout")
+	public void logout(HttpServletRequest req,HttpServletResponse res) {
+		loginService.logout(req, res);
+	}
 }

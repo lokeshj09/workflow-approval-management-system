@@ -13,16 +13,23 @@ export const setupInterceptors = (setToken, setIsAuthenticated) => {
   api.interceptors.response.use(
     res => res,
     async err => {
-      if (err.response?.status === 401) {
+      const originalRequest = err.config;
+      if (err.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
         try {
-          const res = await api.post("/refresh/token", {}, { withCredentials: true });
-          localStorage.setItem("accessToken", res.data);
-
-          setToken(res.data);
+          const res = await api.post(
+            "/refresh/token",
+            {},
+            { withCredentials: true }
+          );
+          const newToken = res.data;
+          setToken(newToken);
           setIsAuthenticated(true);
-
-          err.config.headers.Authorization = `Bearer ${res.data}`;
-          return api(err.config);
+          if(token && token.includes("."))
+            originalRequest.headers.Authorization = `Bearer ${newToken}`;
+          else
+            delete originalRequest.headers.Authorization;
+          return api(originalRequest);
         } catch {
           setToken(null);
           setIsAuthenticated(false);

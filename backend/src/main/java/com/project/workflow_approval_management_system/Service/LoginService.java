@@ -80,4 +80,20 @@ public class LoginService {
 		String accessToken = jwtService.generateToken(username);
 		return accessToken;
 	}
+
+	public void logout(HttpServletRequest req,HttpServletResponse res) {
+		 Cookie[] cookies = req.getCookies();
+		 if(cookies!=null) {
+			 for(Cookie cookie:cookies) {
+				 if(cookie.getName().equals("loginCookie")) {
+					 cookie.setMaxAge(0);
+					 cookie.setPath("/");
+					 cookie.setValue(null);
+					 res.addCookie(cookie);
+				 }
+			 }
+		 } else {
+			 return;
+		 }
+	}
 }

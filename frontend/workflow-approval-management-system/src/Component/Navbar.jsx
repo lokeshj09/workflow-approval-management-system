@@ -4,7 +4,15 @@ import "../Style/navbar.css"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const {details} = useContext(Context);
+    const {details,setDetails,setToken,setIsAuthenticated} = useContext(Context);
+    const logout = () => {
+        setDetails(null);
+        setToken(null);
+        setIsAuthenticated(false);
+        api.post('/api/logout',{},{
+            withCredentials: true
+        });
+    }
   return (
     <div className="navbar">
         <div className="links">
@@ -23,7 +31,7 @@ const Navbar = () => {
             </div>
         }
         <div className="links links-logout">
-            <Link className="link link-logout">Logout</Link>
+            <Link className="link link-logout" onClick={logout}>Logout</Link>
         </div>
     </div>
   )
